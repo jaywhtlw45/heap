@@ -74,6 +74,12 @@ int main()
         H.extract_minimum(mainArr, n);
         H.printArray(mainArr, n);
 
+          // cout
+          //     << "calling buildMinHeap(): " << endl
+          //     << "\t";
+          // H.buildMinHeap(mainArr, n);
+          // H.printArray(mainArr, n);
+
         cout << "Sorting a Min Heap: " << endl
              << "\t";
         H.descendingHeapSort(mainArr, n);

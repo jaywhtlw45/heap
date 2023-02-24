@@ -94,7 +94,7 @@ void Heap::insert_value_maxHeap(int Arr[], int val, int &n)
     }
 }
 
-// Ceates a sub heap using index 'i'.
+// Ceates a sub heap using index 'i'.   
 void Heap::max_heapify(int Arr[], int i, int n)
 {
     if (n < 1 || n > HEAP_SIZE)
@@ -115,7 +115,7 @@ void Heap::max_heapify(int Arr[], int i, int n)
     else
         largest = i;
 
-    if (right <= (n - 1) && Arr[right] > Arr[left])
+    if (right <= (n - 1) && Arr[right] > Arr[largest])
         largest = right;
 
     if (largest != i)
@@ -270,7 +270,7 @@ void Heap::min_heapify(int Arr[], int i, int n)
     else
         smallest = i;
 
-    if (right <= (n - 1) && Arr[right] < Arr[left])
+    if (right <= (n - 1) && Arr[right] < Arr[smallest])
         smallest = right;
 
     if (smallest != i)
