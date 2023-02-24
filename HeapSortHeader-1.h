@@ -57,7 +57,7 @@ void Heap::printArray(int Arr[], int n)
 // Modifies the value of an 'existing' element.
 void Heap::modifyValMax(int Arr[], int n, int i, int val)
 {
-    if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1))
+    if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1) || val < Arr[i])
     {
         cout << "modifyValMax() error" << endl;
         return;
@@ -211,7 +211,7 @@ void Heap::buildMaxHeap(int Arr[], int n)
 // Modifies the value of an 'existing' element.
 void Heap::modifyValMin(int Arr[], int n, int i, int val)
 {
-    if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1))
+    if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1) || val > Arr[i])
     {
         cout << "modifyValMin() error" << endl;
         return;
