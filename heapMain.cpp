@@ -1,3 +1,8 @@
+// Jason Whitlow 108698011
+// csci115 lab4 HeapSort
+// heapMain.cpp
+// 
+
 #include <iostream>
 #include "HeapSortHeader-1.h"
 using namespace std;

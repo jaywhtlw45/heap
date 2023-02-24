@@ -1,6 +1,7 @@
-// Jason Whitlow 10895865
+// Jason Whitlow 108698011
 // csci115 lab4 HeapSort
-// The following class creates a heap.
+// HeapSortHeader-1.h
+// This class converts an unsorted array into an heap.
 
 #include <iostream>
 using namespace std;
@@ -26,8 +27,8 @@ public:
     // Min Heap
     void modifyValMin(int Arr[], int n, int i, int val);   // Modify value
     void insert_value_minHeap(int Arr[], int val, int &n); // Adds value at the end of array and calls min_heapify
-    void min_heapify(int Arr[], int i, int n);                    // Maintains min heap property
-    int extract_minimum(int Arr[], int &n);                        // Return the minimum element in heap and swap last element with first element
+    void min_heapify(int Arr[], int i, int n);             // Maintains min heap property
+    int extract_minimum(int Arr[], int &n);                // Return the minimum element in heap and swap last element with first element
     void descendingHeapSort(int Arr[], int n);             // Sorts the array in descending order
     void buildMinHeap(int Arr[], int n);                   // Heapifies entire list
 };
@@ -44,7 +45,11 @@ void Heap::printArray(int Arr[], int n)
         cout << "Arr[" << i << "]=" << Arr[i] << endl;
 }
 
-// Max Heap------------------------------------------------
+//*************************************************
+// Max Heap functions()
+//*************************************************
+
+// Modifies the value of an 'existing' element.
 void Heap::modifyValMax(int Arr[], int n, int i, int val)
 {
     if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1))
@@ -57,6 +62,7 @@ void Heap::modifyValMax(int Arr[], int n, int i, int val)
     max_heapify(Arr, i, n);
 }
 
+// Inserts a new node at the end of the heap and increases the heap size 'n' by 1.
 void Heap::insert_value_maxHeap(int Arr[], int val, int &n)
 {
     if (n < 0 || n >= HEAP_SIZE)
@@ -70,8 +76,8 @@ void Heap::insert_value_maxHeap(int Arr[], int val, int &n)
     Arr[n - 1] = val;
 
     // compare parent node to child node and swap positions if child > parent
-    int parent = n / 2 - 1; // parent node
-    int child = n - 1;      // child node
+    int parent = n / 2 - 1; 
+    int child = n - 1;      
     while (parent >= 0 && Arr[child] > Arr[parent])
     {
         int temp = Arr[parent];
@@ -83,6 +89,7 @@ void Heap::insert_value_maxHeap(int Arr[], int val, int &n)
     }
 }
 
+// Ceates a sub heap using index 'i'.
 void Heap::max_heapify(int Arr[], int i, int n)
 {
     if (n < 1 || n > HEAP_SIZE)
@@ -93,8 +100,8 @@ void Heap::max_heapify(int Arr[], int i, int n)
     if (n == 1)
         return;
 
-    int left = i * 2 + 1;  // left child of i
-    int right = i * 2 + 2; // right child of i
+    int left = i * 2 + 1;       // left child of i
+    int right = i * 2 + 2;      // right child of i
     int largest;
 
     // find the largest between i, left, and right
@@ -116,6 +123,7 @@ void Heap::max_heapify(int Arr[], int i, int n)
     }
 }
 
+// Returns and removes the root of the heap.
 int Heap::extract_maximum(int Arr[], int &n)
 {
     if (n < 1 || n > HEAP_SIZE)
@@ -141,6 +149,8 @@ int Heap::extract_maximum(int Arr[], int &n)
     // NOTE: Arr[n] has already been removed from the heap
     return Arr[n];
 }
+
+// Sorts the heap by swapping the root and last element, then calling max_heapify().
 void Heap::ascendingHeapSort(int Arr[], int n)
 {
     if (n < 1 || n > HEAP_SIZE)
@@ -171,6 +181,7 @@ void Heap::ascendingHeapSort(int Arr[], int n)
     }
 }
 
+// Converts an array into a heap.
 void Heap::buildMaxHeap(int Arr[], int n)
 {
     if (n < 1 || n > HEAP_SIZE)
@@ -188,7 +199,11 @@ void Heap::buildMaxHeap(int Arr[], int n)
     }
 }
 
-// Min Heap----------------------------------------------
+//*******************************************************
+// Min Heap Functions
+//*******************************************************
+
+// Modifies the value of an 'existing' element.
 void Heap::modifyValMin(int Arr[], int n, int i, int val)
 {
     if ((i < 0) || (i > HEAP_SIZE) || (i > n - 1))
@@ -202,6 +217,7 @@ void Heap::modifyValMin(int Arr[], int n, int i, int val)
 
 }
 
+// Inserts a new node at the end of the heap and increases the heap size 'n' by 1.
 void Heap::insert_value_minHeap(int Arr[], int val, int &n)
 {
       if (n < 0 || n >= HEAP_SIZE)
@@ -227,6 +243,8 @@ void Heap::insert_value_minHeap(int Arr[], int val, int &n)
         parent = (parent - 1) / 2;
     }
 }
+
+// Ceates a sub heap using index 'i'.
 void Heap::min_heapify(int Arr[], int i, int n)
 {
      if (n < 1 || n > HEAP_SIZE)
@@ -259,6 +277,8 @@ void Heap::min_heapify(int Arr[], int i, int n)
         min_heapify(Arr, smallest, n);
     }
 }
+
+// Returns and removes the root of the heap.
 int Heap::extract_minimum(int Arr[], int &n)
 {
       if (n < 1 || n > HEAP_SIZE)
@@ -284,6 +304,8 @@ int Heap::extract_minimum(int Arr[], int &n)
     // NOTE: Arr[n] has already been removed from the heap
     return Arr[n];
 }
+
+// Sorts the heap by swapping the root and last element, then calling min_heapify().
 void Heap::descendingHeapSort(int Arr[], int n)
 {
      if (n < 1 || n > HEAP_SIZE)
@@ -313,6 +335,8 @@ void Heap::descendingHeapSort(int Arr[], int n)
         Arr[n - i - 1] = temp;
     }
 }
+
+// Converts an array into a heap.
 void Heap::buildMinHeap(int Arr[], int n)
 {
     if (n < 1 || n > HEAP_SIZE)
