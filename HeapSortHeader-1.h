@@ -2,6 +2,7 @@
 // csci115 lab4 HeapSort
 // HeapSortHeader-1.h
 // This class converts an unsorted array into an heap.
+// NOTE: ascendingHeapSort and descendingHeapsort were modified to sort the heap without printing.
 
 #include <iostream>
 using namespace std;
@@ -42,7 +43,11 @@ void Heap::printArray(int Arr[], int n)
     }
 
     for (size_t i = 0; i < n; i++)
-        cout << "Arr[" << i << "]=" << Arr[i] << endl;
+    {
+        //cout << "Arr[" << i << "]=" << Arr[i] << endl;
+        cout << Arr[i] << " ";
+    }
+    cout << endl;
 }
 
 //*************************************************
