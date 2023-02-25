@@ -20,7 +20,8 @@ int main()
      int val;    // value to be inserted into heap
      int input;  // user input
 
-     cout << "  This program generates an array and then turns that array into a heap. The program assumes sanitized user input." << endl;
+     cout << "  This program generates an array and then turns that array into a heap." << endl;
+     cout << "  The program assumes sanitized user input." << endl;
      cout << "  Erroneous user input is not handled by this program." << endl
           << endl;
 
@@ -29,20 +30,22 @@ int main()
      H.printArray(mainArr, n);
 
      cout << "Enter 0 to build a max_heap, enter 1 to build a min heap: ";
-     while (input != = 0 && input != 1)
+     input = getUserInput();
+     while (input != 0 && input != 1)
           input = getUserInput();
-
-     bool run = true;
+     cout << endl;
 
      // Max Heap
      if (input == 0)
      {
+          bool run = true;
           while (run)
           {
                cout << "1: Add a value to heap" << endl;
                cout << "2: Remove max number" << endl;
                cout << "3: Sort Heap" << endl;
-               cout << "4: Exit" << endl << endl;
+               cout << "4: Exit" << endl
+                    << endl;
                cout << "Enter choice: ";
 
                input = getUserInput();
@@ -52,27 +55,40 @@ int main()
                     cout << "Enter a value: ";
                     input = getUserInput();
                     H.insert_value_maxHeap(mainArr, input, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
                }
                if (input == 2)
+               {
                     H.extract_maximum(mainArr, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
+               }
                if (input == 3)
+               {
                     H.ascendingHeapSort(mainArr, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
+               }
                if (input == 4)
                     run = false;
           }
      }
 
+     // Min Heap
      if (input == 1)
      {
-     }
-
-     // Min Heap
-     if (input == 0)
-     {
-          cout << "1: Add a value to heap" << endl;
+          bool run = true;
+          while (run)
+          {
+               cout << "1: Add a value to heap" << endl;
                cout << "2: Remove max number" << endl;
                cout << "3: Sort Heap" << endl;
-               cout << "4: Exit" << endl << endl;
+               cout << "4: Exit" << endl
+                    << endl;
                cout << "Enter choice: ";
 
                input = getUserInput();
@@ -81,38 +97,32 @@ int main()
                {
                     cout << "Enter a value: ";
                     input = getUserInput();
-                    H.insert_value_maxHeap(mainArr, input, n);
+                    H.insert_value_minHeap(mainArr, input, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
                }
                if (input == 2)
-                    H.extract_maximum(mainArr, n);
+               {
+                    H.extract_minimum(mainArr, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
+               }
                if (input == 3)
-                    H.ascendingHeapSort(mainArr, n);
+               {
+                    H.descendingHeapSort(mainArr, n);
+                    cout << "Heap:" << endl << "\t";
+                    H.printArray(mainArr, n);
+                    cout << endl;
+               }
                if (input == 4)
                     run = false;
-     }
 
-     // Min Heap
-     if (input == 1)
-     {
-          cout << "Building a Min Heap: " << endl
-               << "\t";
-          H.buildMinHeap(mainArr, n);
-          H.printArray(mainArr, n);
+               if (input <1 || input >5)
+                    cout << "Enter a valid choice" << endl;
 
-          cout << "Adding 5 to the heap: " << endl
-               << "\t";
-          H.insert_value_minHeap(mainArr, 5, n);
-          H.printArray(mainArr, n);
-
-          cout << "Extracting minimum from heap: " << endl
-               << "\t";
-          H.extract_minimum(mainArr, n);
-          H.printArray(mainArr, n);
-
-          cout << "Sorting a Min Heap: " << endl
-               << "\t";
-          H.descendingHeapSort(mainArr, n);
-          H.printArray(mainArr, n);
+          }
      }
 
      cin.get();
