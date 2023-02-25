@@ -82,6 +82,7 @@ void Heap::insert_value_maxHeap(int Arr[], int val, int &n)
 
     // compare parent node to child node and swap positions if child > parent
     int parent = n / 2 - 1; 
+
     int child = n - 1;      
     while (parent >= 0 && Arr[child] > Arr[parent])
     {
